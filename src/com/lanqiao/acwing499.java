@@ -1,7 +1,6 @@
 package com.lanqiao;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class acwing499 {
 
@@ -28,7 +27,7 @@ public class acwing499 {
         }
 
         //一个快写任何类型的方法,报错改成泛型
-        public void write(Object o) {
+        public <T> void write(T o) {
             pw.println(o);
             pw.flush();
         }
@@ -48,7 +47,7 @@ public class acwing499 {
         if (month == 2) {
             int leap = 0;
             if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) leap = 1;
-            if (day > 28 + leap) return false;
+            return day <= 28 + leap;
         }
         return true;
     }
