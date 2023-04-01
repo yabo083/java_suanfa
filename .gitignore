@@ -1,0 +1,5 @@
+# 项目排除路径
+/out/
+/java_suanfa.iml
+/.fleet/
+/.idea/
