@@ -21,6 +21,7 @@ public class lq1 {
         n %= 3600;
         m = n/60;
         s = n%60;
+        //这里爆红你认真的？懂了JDK版本问题，切成8就没事了
         System.out.printf("%02d:%02d:%02d",h,m,s);
     }
 
