@@ -20,6 +20,6 @@ public class Combination {
     }
 
     public static void main(String[] args) {
-        System.out.println(C(5, 2));
+        System.out.println(C(1000000000, 2));
     }
 }

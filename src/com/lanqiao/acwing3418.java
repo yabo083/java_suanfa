@@ -61,9 +61,12 @@ public class acwing3418 {
 
     private static boolean check(int k) {
         long l = 2L * k;
+        //这里将r设置为n（大多数情况如此），其实乍看你要算一个非常大的组合数
+        //但经过取mid，和C函数中的特判，计算量和计算的组合数也没那么离谱
+        //而且这只是初值，二分会不断缩短区间的，所以没问题
         long r = Math.max(n, l);
         while (l < r) {
-            long mid =  (l + ((r - l) >> 1));
+            long mid = (l + ((r - l) >> 1));
             if (C(mid, k) >= n)
                 r = mid;
             else
