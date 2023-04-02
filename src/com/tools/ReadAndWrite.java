@@ -2,7 +2,8 @@ package com.tools;
 
 import java.io.*;
 
-public class Read {
+class ReadAndWrite {
+    public static class Read {
 
     StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
     PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));//快写
@@ -32,3 +33,5 @@ public class Read {
 
 
 }
+}
+

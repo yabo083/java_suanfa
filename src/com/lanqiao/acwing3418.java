@@ -27,7 +27,7 @@ public class acwing3418 {
         }
 
         //一个快写任何类型的方法,报错改成泛型
-        public void write(Object o) {
+        public <T> void write(T o) {
             pw.println(o);
             pw.flush();
         }
