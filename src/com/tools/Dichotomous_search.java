@@ -11,6 +11,10 @@ public class Dichotomous_search {
         return true;
     }
 
+    /**
+     *那这个二分板子就是求最右满足条件的点喽
+     * 【1，2，3，4，4，5】拿这个试一试就知道了。
+     */
     int right_bound(int l, int r) {
         while (l < r) {
             int mid = l + (r - l + 1) >> 1;
@@ -20,6 +24,9 @@ public class Dichotomous_search {
         return l;
     }
 
+    /**
+     * 这确实是求最左的满足条件的点的下标的
+     */
     int left_bound(int l, int r) {
         while (l < r) {
             int mid = l + (r - l) >> 1;
