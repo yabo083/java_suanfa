@@ -4,13 +4,17 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 class ReadAndWrite {
-    static class Read {
+
+    /**
+     * 高精度快读快写
+     */
+    static class HighPrecisioRead {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));//快写
 
-        Read() throws IOException {
-        }
+        HighPrecisioRead() throws IOException {}
+
         //read类升级，由StreamTokenizer变成StringTokenizer
         String next() {
             while (st==null||!st.hasMoreElements()){
@@ -44,6 +48,29 @@ class ReadAndWrite {
         public <T> void write(T o) {
             pw.println(o);
             pw.flush();
+        }
+
+
+    }
+
+    /**
+     * 极简版快读快写，常用
+     */
+    public static class Read {
+
+        StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
+        PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));//快写
+
+        //快读一个整数
+        public int nextInt() throws IOException {
+            st.nextToken();
+            return (int) st.nval;
+        }
+
+        //一个快写任何类型的方法,报错改成泛型
+        public <T> void write(T o) {
+            pw.print(o + " ");
+
         }
 
 
