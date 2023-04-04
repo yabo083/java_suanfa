@@ -3,7 +3,6 @@ package com.lanqiao;
 import java.io.*;
 
 
-
 public class acwing800 {
 
     static int N = 100010;
@@ -26,13 +25,13 @@ public class acwing800 {
             b[j] = sc.nextInt();
 
         //双指针
-       for (int i = 0, j = m - 1; i < n; i++) {
-           while (j >= 0 && a[i] + b[j] > x) j--;
-           if (j >= 0 && a[i] + b[j] == x) {
-               sc.write(i + " " + j);
-               return;
-           }
-       }
+        for (int i = 0, j = m - 1; i < n; i++) {
+            while (j >= 0 && a[i] + b[j] > x) j--;
+            if (j >= 0 && a[i] + b[j] == x) {
+                sc.write(i + " " + j);
+                return;
+            }
+        }
     }
 
     public static class Read {
@@ -65,8 +64,6 @@ public class acwing800 {
 
 
     }
-
-
 
 
 }

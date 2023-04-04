@@ -3,3 +3,6 @@
 /java_suanfa.iml
 /.fleet/
 /.idea/
+/src/com/tools/.classpath
+/src/com/tools/.settings/
+/src/com/tools/.project
