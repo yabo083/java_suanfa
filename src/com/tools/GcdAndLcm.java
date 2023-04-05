@@ -2,14 +2,14 @@ package com.tools;
 
 public class GcdAndLcm {
 
-    //求最大公约数
-    public static int gcd1(int a, int b) {
-        return b == 0 ? a : gcd1(b, a % b);
-    }
-
     //求最小公倍数
     public static int lcm(int a, int b) {
         return a / gcd1(a, b) * b;
+    }
+
+    //求最大公约数
+    public static int gcd1(int a, int b) {
+        return b == 0 ? a : gcd1(b, a % b);
     }
 
     //Stein算法（结合辗转相除法和更相减损法的优势以及移位运算）求最大公约数

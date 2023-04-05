@@ -82,15 +82,13 @@ class ReadAndWrite {
      */
     static class sc {
         static StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
-        static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));//快写
+        static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));
 
-        //快读一个整数
         public static int nextInt() throws IOException {
             st.nextToken();
             return (int) st.nval;
         }
 
-        //一个快写任何类型的方法,报错改成泛型
         public static  <T> void write(T o) {
             pw.print(o);
         }
