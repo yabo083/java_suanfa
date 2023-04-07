@@ -27,8 +27,8 @@ public class acwing871 {
             long sum = 0;
             int k = primes.get(a);
 
-//          long sum = 1;
-//          while(k-- > 0) sum = (sum * a + 1) % mod;  //求出a^k + a^(k-1) + ... + a^0
+//          long car = 1;
+//          while(k-- > 0) car = (car * a + 1) % mod;  //求出a^k + a^(k-1) + ... + a^0
 
             for (int i = 0; i <= k; i++) {
                 long pow = 1;

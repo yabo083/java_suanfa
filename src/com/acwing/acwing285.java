@@ -2,8 +2,6 @@ package com.acwing;
 import java.util.*;
 public class acwing285 {
 
-
-
         static final int N = 6010;
         static int n, idx;
         static int[] h = new int[N], e = new int[N], ne = new int[N], happy = new int[N];
