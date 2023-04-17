@@ -1,4 +1,4 @@
-package com.acwing;
+package com.acwing.base;
 import java.util.*;
 public class acwing285 {
 

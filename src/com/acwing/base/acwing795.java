@@ -1,10 +1,30 @@
-package com.acwing;
+package com.acwing.base;
 
 import java.io.*;
 
+public class acwing795 {
 
-public class acwing4944 {
+    static int N = 100010;
 
+    static long[] a = new long[N];
+
+    static int n, m;
+
+    public static void main(String[] args) throws IOException{
+        Read sc = new Read();
+        n = sc.nextInt();
+        m = sc.nextInt();
+        for (int i = 1; i <= n; i ++) {
+            a[i] = a[i - 1] + sc.nextInt();
+        }
+        while (m -- > 0){
+            int l = sc.nextInt();
+            int r = sc.nextInt();
+            sc.write(a[r] - a[l - 1]);
+        }
+
+
+    }
 
 
     public static class Read {
@@ -30,22 +50,12 @@ public class acwing4944 {
         }
 
         //一个快写任何类型的方法,报错改成泛型
-        public void write(Object o) {
-            pw.print(o + " ");
+        public <T> void write(T o) {
+            pw.println(o);
             pw.flush();
         }
 
 
     }
-
-    public static void main(String[] args) throws IOException {
-        Read sc = new Read();
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-
-        sc.write(Math.min(a, b));
-        sc.write((int)Math.floor( Math.abs(a - b) / 2.0));
-    }
-
 
 }

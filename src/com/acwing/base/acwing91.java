@@ -1,4 +1,4 @@
-package com.acwing;
+package com.acwing.base;
 
 import java.io.*;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ public class acwing91 {
     static int[][] w = new int[N][N], f = new int[M][N];
 
     public static void main(String[] args)throws IOException {
-//        Scanner sc = new Scanner(System.in);
+//        Scanner scPro = new Scanner(System.in);
         Read sc = new Read();
         n = sc.nextInt();
         for (int i = 0; i < n; i ++ ){

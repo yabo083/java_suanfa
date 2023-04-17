@@ -1,4 +1,4 @@
-package com.acwing;
+package com.acwing.base;
 
 import java.util.ArrayList;
 import java.util.List;

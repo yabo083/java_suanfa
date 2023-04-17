@@ -1,33 +1,22 @@
-package com.tools;
+package com.acwing.base;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
-class ReadAndWrite {
+public class acwing3384 {
 
+    static int N = 110, idx;
+    static char[] a = new char[N];
 
-    /**
-     * 静态极简版快读快写，可以直接用
-     */
-    static class sc {
-        static StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
-        static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));
+    static class Tree {
+        Tree left, right;
+        char var;
 
-        public static int nextInt() throws IOException {
-            st.nextToken();
-            return (int) st.nval;
+        public Tree(char var) {
+            this.var = var;
         }
-
-        public static <T> void write(T o) {
-            pw.print(o);
-        }
-
-
     }
 
-    /**
-     * 高精度快读快写
-     */
     static class scPro {
         static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         static StringTokenizer st;
@@ -68,17 +57,44 @@ class ReadAndWrite {
 
         //一个快写任何类型的方法,报错改成泛型
         public static <T> void write(T o) {
-            pw.println(o);
-            pw.flush();
+            pw.print(o);
+//            pw.flush();
         }
 
 
     }
 
-    public static void main(String[] args) throws IOException {
-        //生成read所有方法的测试用例
 
+    //建树
+    public static Tree build() {
+        char var = a[idx++];
+        if (var == '#') return null;
+
+        Tree t = new Tree(var);
+        t.left = build();
+        t.right = build();
+        return t;
+    }
+
+    //中序遍历树，实质是dfs，只不过是在哪输出而已
+    public static void dfs_mid_order(Tree t) {
+        if (t == null) return;
+        dfs_mid_order(t.left);
+        scPro.write(t.var + " ");
+        dfs_mid_order(t.right);
+    }
+
+    public static void main(String[] args) throws IOException {
+        a = scPro.readLine().toCharArray();
+        dfs_mid_order(build());
+        scPro.pw.flush();
 
     }
-}
 
+
+
+
+
+
+
+}

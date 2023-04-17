@@ -1,4 +1,4 @@
-package com.acwing;
+package com.acwing.base;
 
 import java.io.*;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.acwing;
+package com.acwing.base;
 
 import java.io.*;
 import java.util.Arrays;
@@ -73,11 +73,11 @@ public class acwing4945 {
 //
 //
 //        if (x2 < y2)
-//            sc.write("<");
+//            scPro.write("<");
 //        else if (x2 > y2)
-//            sc.write(">");
+//            scPro.write(">");
 //        else
-//            sc.write("=");
+//            scPro.write("=");
         long x2 = hex(x, bx);
         long y2 = hex(y, by);
 
