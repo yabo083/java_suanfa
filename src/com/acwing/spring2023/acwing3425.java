@@ -1,46 +1,57 @@
-package com.tools;
+package com.acwing.spring2023;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-class ReadAndWrite {
+public class acwing3425 {
 
+    static int N = 110, n;
+
+    static mouse[] w = new mouse[N];
 
     public static void main(String[] args) throws IOException {
-        //生成read所有方法的测试用例
+        n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            Integer weight = sc.nextInt();
+            String c = sc.next();
+            w[i] = new mouse(weight, c);
+        }
+
+        Arrays.sort(w, 0, n);
+
+        for (int i = n - 1; i >= 0; i--) {
+            sc.write(w[i].color);
+        }
+        sc.pw.flush();
+
 
     }
 
-    /**
-     * 静态极简版快读快写，可以直接用
-     */
+    static class mouse implements Comparable<mouse> {
+
+        Integer weight;
+        String color;
+
+        public mouse(Integer weight, String c) {
+            this.weight = weight;
+            this.color = c;
+        }
+
+        @Override
+        public int compareTo(mouse o) {
+            return this.weight - o.weight;
+        }
+
+    }
+
     static class sc {
-
-        static StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
-        static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));
-
-        public static int nextInt() throws IOException {
-            st.nextToken();
-            return (int) st.nval;
-        }
-
-        public static <T> void write(T o) {
-            pw.print(o);
-        }
-
-
-    }
-
-    /**
-     * 高精度快读快写,涉及到数字与字符串的读写时使用，避免不必要的麻烦
-     */
-    static class scPro {
 
         static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         static StringTokenizer st;
         static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));//快写
 
-        scPro() throws IOException {
+        sc() throws IOException {
         }
 
         //read类升级，由StreamTokenizer变成StringTokenizer
@@ -76,16 +87,10 @@ class ReadAndWrite {
         //一个快写任何类型的方法,报错改成泛型
         public static <T> void write(T o) {
             pw.println(o);
-            pw.flush();
+//            pw.flush();
         }
-
-        //用来判断是否有未读取的数据
-        static boolean hasNext() throws IOException {
-            return br.ready();
-        }
-
 
 
     }
-}
 
+}

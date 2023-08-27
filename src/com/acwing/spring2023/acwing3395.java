@@ -1,46 +1,32 @@
-package com.tools;
+package com.acwing.spring2023;
 
 import java.io.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
-class ReadAndWrite {
-
+public class acwing3395 {
 
     public static void main(String[] args) throws IOException {
-        //生成read所有方法的测试用例
+        BigInteger A = new BigInteger(sc.readLine());
+
+        StringBuilder sb = new StringBuilder(A.toString(2));
+
+        BigInteger rb = new BigInteger(sb.reverse().toString(), 2);
+
+        String B = rb.toString();
+
+        sc.write(B);
 
     }
 
-    /**
-     * 静态极简版快读快写，可以直接用
-     */
     static class sc {
-
-        static StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
-        static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));
-
-        public static int nextInt() throws IOException {
-            st.nextToken();
-            return (int) st.nval;
-        }
-
-        public static <T> void write(T o) {
-            pw.print(o);
-        }
-
-
-    }
-
-    /**
-     * 高精度快读快写,涉及到数字与字符串的读写时使用，避免不必要的麻烦
-     */
-    static class scPro {
 
         static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         static StringTokenizer st;
         static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));//快写
 
-        scPro() throws IOException {
+        sc() throws IOException {
         }
 
         //read类升级，由StreamTokenizer变成StringTokenizer
@@ -79,13 +65,7 @@ class ReadAndWrite {
             pw.flush();
         }
 
-        //用来判断是否有未读取的数据
-        static boolean hasNext() throws IOException {
-            return br.ready();
-        }
-
-
 
     }
-}
 
+}

@@ -1,46 +1,36 @@
-package com.tools;
+package com.acwing.spring2023;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
-class ReadAndWrite {
-
+public class acwing3475 {
 
     public static void main(String[] args) throws IOException {
-        //生成read所有方法的测试用例
-
+        while (true){
+            String st = sc.readLine();
+            if ("ENDOFINPUT".equals(st)){
+                break;
+            }
+            String text = sc.readLine();
+            sc.readLine();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < text.length(); i++) {
+                char c = text.charAt(i);
+                if (Character.isLetter(c)) sb.append((char)((c - 'A' - 5 + 26) % 26 + 'A'));
+                else sb.append(c);
+            }
+            sc.write(sb.toString() + "\n");
+        }
+        sc.pw.flush();
     }
 
-    /**
-     * 静态极简版快读快写，可以直接用
-     */
     static class sc {
-
-        static StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
-        static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));
-
-        public static int nextInt() throws IOException {
-            st.nextToken();
-            return (int) st.nval;
-        }
-
-        public static <T> void write(T o) {
-            pw.print(o);
-        }
-
-
-    }
-
-    /**
-     * 高精度快读快写,涉及到数字与字符串的读写时使用，避免不必要的麻烦
-     */
-    static class scPro {
 
         static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         static StringTokenizer st;
         static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));//快写
 
-        scPro() throws IOException {
+        sc() throws IOException {
         }
 
         //read类升级，由StreamTokenizer变成StringTokenizer
@@ -75,8 +65,7 @@ class ReadAndWrite {
 
         //一个快写任何类型的方法,报错改成泛型
         public static <T> void write(T o) {
-            pw.println(o);
-            pw.flush();
+            pw.print(o);
         }
 
         //用来判断是否有未读取的数据
@@ -87,5 +76,5 @@ class ReadAndWrite {
 
 
     }
-}
 
+}
