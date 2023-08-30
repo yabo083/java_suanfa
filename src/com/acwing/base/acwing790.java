@@ -1,41 +1,23 @@
-package com.tools;
+package com.acwing.base;
 
 import java.io.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.StringTokenizer;
 
-class ReadAndWrite {
-
+public class acwing790 {
 
     public static void main(String[] args) throws IOException {
-        //生成read所有方法的测试用例
-
+        double x = scPro.nextDouble();
+        double l = -22, r = 22;
+        while (r - l > 1e-8){
+            double mid  = (l + r) / 2;
+            if (mid * mid *mid >= x ) r = mid;
+            else l = mid;
+        }
+        System.out.printf("%.6f\n",l);
     }
 
-    /**
-     * 静态极简版快读快写，可以直接用
-     */
-    static class sc {
-
-        static StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
-        static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));
-
-        public static int nextInt() throws IOException {
-            st.nextToken();
-            return (int) st.nval;
-        }
-
-        public static <T> void write(T o) {
-            pw.print(o);
-        }
-
-
-    }
-
-    /**
-     * 高精度快读快写,涉及到数字与字符串的读写时使用，避免不必要的麻烦
-     */
     static class scPro {
 
         static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -81,6 +63,22 @@ class ReadAndWrite {
             pw.flush();
         }
 
+        //输出指定小数位数的数值
+        public static <T> void write(T o, int n) {
+            if (o instanceof Double) {
+                StringBuilder pattern = new StringBuilder("0.");
+                for (int i = 0; i < n; i++) {
+                    pattern.append("0");
+                }
+                DecimalFormat df = new DecimalFormat(pattern.toString());
+                String formattedNumber = df.format(o);
+                pw.print(formattedNumber);
+            } else {
+                pw.print(o);
+            }
+        }
+
+
         //用来判断是否有未读取的数据
         static boolean hasNext() throws IOException {
             return br.ready();
@@ -89,5 +87,5 @@ class ReadAndWrite {
 
 
     }
-}
 
+}

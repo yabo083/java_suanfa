@@ -1,42 +1,16 @@
-package com.tools;
+package com.acwing.base;
 
 import java.io.*;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
+import java.math.BigDecimal;
 import java.util.StringTokenizer;
 
-class ReadAndWrite {
+public class acwing792 {
 
-
-    public static void main(String[] args) throws IOException {
-        //生成read所有方法的测试用例
-
+    public static BigDecimal subtract(BigDecimal a, BigDecimal b) {
+        return a.subtract(b);
     }
 
-    /**
-     * 静态极简版快读快写，可以直接用
-     */
-    static class sc {
-
-        static StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
-        static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));
-
-        public static int nextInt() throws IOException {
-            st.nextToken();
-            return (int) st.nval;
-        }
-
-        public static <T> void write(T o) {
-            pw.print(o);
-        }
-
-
-    }
-
-    /**
-     * 高精度快读快写,涉及到数字与字符串的读写时使用，避免不必要的麻烦
-     */
-    static class scPro {
+    public static class scPro {
 
         static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         static StringTokenizer st;
@@ -78,7 +52,6 @@ class ReadAndWrite {
         //一个快写任何类型的方法,报错改成泛型
         public static <T> void write(T o) {
             pw.println(o);
-            pw.flush();
         }
 
         //用来判断是否有未读取的数据
@@ -89,5 +62,12 @@ class ReadAndWrite {
 
 
     }
-}
 
+    public static void main(String[] args) throws IOException {
+        BigDecimal a = new BigDecimal(scPro.readLine());
+        BigDecimal b = new BigDecimal(scPro.readLine());
+        scPro.write(subtract(a, b));
+        scPro.pw.flush();
+    }
+
+}
