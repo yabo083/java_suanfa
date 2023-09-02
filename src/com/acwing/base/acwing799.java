@@ -1,27 +1,28 @@
 package com.acwing.base;
 
+
 import java.io.*;
 
-public class acwing795 {
+public class acwing799 {
 
     static int N = 100010;
+    static int[] a = new int[N], s = new int[N];
 
-    static long[] a = new long[N];
 
     public static void main(String[] args) throws IOException {
         int n = sc.nextInt();
-        int m = sc.nextInt();
+        int res = 0;
 
-        //边输入边计算
-        for (int i = 1; i <= n; i ++) {
-            a[i] = a[i - 1] + sc.nextInt();
-        }
-        while (m -- > 0){
-            int l = sc.nextInt();
-            int r = sc.nextInt();
-            sc.write(a[r] - a[l - 1]);
-        }
+        for (int i = 0, j = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+            s[a[i]]++;
 
+            while (s[a[i]] > 1) {
+                s[a[j++]]--;
+            }
+            res = Math.max(res, i - j + 1);
+        }
+        sc.write(res);
         sc.pw.flush();
 
     }
@@ -44,3 +45,4 @@ public class acwing795 {
     }
 
 }
+
