@@ -2,6 +2,7 @@ package com.acwing.base;
 
 import java.io.*;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 
 /**
@@ -12,47 +13,99 @@ import java.util.Scanner;
  */
 public class acwing826 {
 
-    static int N = 100010;
+    public static int N = 100010;
 
-    static int idx = 1;
+    public static int idx = 1;
 
-    static int[] e = new int[N], ne = new int[N];
+    public static int[] e = new int[N], ne = new int[N];
 
-    static void add(int k, int x){
+    public static void add(int k, int x){
         e[idx] = x;
         ne[idx] = ne[k];
         ne[k] = idx ++;
     }
 
-    static void remove(int k){
+    public static void remove(int k){
         ne[k] = ne[ne[k]];
     }
 
     public static void main(String[] args) throws IOException {
-        Scanner bf = new Scanner(System.in);
-        int m = bf.nextInt();
+        int m = scPro.nextInt();
         ne[0] = -1;
         while (m -- > 0){
             int k, x;
-            String op = bf.next();
+            String op = scPro.next();
             if ("H".equals(op)){
-                x = bf.nextInt();
+                x = scPro.nextInt();
                 add(0, x);
             }else if ("D".equals(op)){
-                k = bf.nextInt();
+                k = scPro.nextInt();
                 remove(k);
             }else {
-                k = bf.nextInt();
-                x = bf.nextInt();
+                k = scPro.nextInt();
+                x = scPro.nextInt();
                 add(k, x);
             }
 
         }
 
         for (int i = ne[0]; i != -1; i = ne[i]){
-            System.out.print(e[i] + " ");
+            scPro.write(e[i] + " ");
         }
-        System.out.println();
+        scPro.pw.flush();
+
+
+    }
+
+    static class scPro {
+
+        static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        static StringTokenizer st;
+        static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));//快写
+
+        scPro() throws IOException {
+        }
+
+        //read类升级，由StreamTokenizer变成StringTokenizer
+        static String next() {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+
+        //快读一个整数
+        static int nextInt() {
+            return Integer.parseInt(next());
+        }
+
+        static long nextLong() {
+            return Long.parseLong(next());
+        }
+
+        static double nextDouble() {
+            return Double.parseDouble(next());
+        }
+
+        //这下换成br，就可以读任意类型的字符串了
+        static public String readLine() throws IOException {
+            return br.readLine();
+        }
+
+        //一个快写任何类型的方法,报错改成泛型
+        public static <T> void write(T o) {
+            pw.print(o);
+        }
+
+        //用来判断是否有未读取的数据
+        static boolean hasNext() throws IOException {
+            return br.ready();
+        }
+
 
 
     }

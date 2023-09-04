@@ -45,7 +45,7 @@ class ReadAndWrite {
         scPro() throws IOException {
         }
 
-        //read类升级，由StreamTokenizer变成StringTokenizer
+        //read类升级，由StreamTokenizer变成StringTokenizer，相比于readline读一行，这个方法可以读混合字符串和数字的一行而且只读取字符串。
         static String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
