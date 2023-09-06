@@ -1,41 +1,37 @@
-package com.tools;
+package com.acwing.base;
 
 import java.io.*;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
-class ReadAndWrite {
+public class acwing828 {
 
+    public static int N = 100010;
 
-    public static void main(String[] args) throws IOException {
-        //生成read所有方法的测试用例
+    public static int[] stk = new int[N];
+
+    public static int tt = 0;
+
+    public static void main(String[] args) {
+        int m = scpro.nextInt();
+
+        while (m-- > 0) {
+            String op = scpro.next();
+            if (op.equals("push")) {
+                int x = scpro.nextInt();
+                stk[++tt] = x;
+            } else if (op.equals("pop")) {
+                tt--;
+            } else if (op.equals("empty")) {
+                scpro.write((tt == 0 ? "YES" : "NO") + "\n");
+            } else if (op.equals("query")) {
+                scpro.write(stk[tt]);
+            }
+        }
+        scpro.pw.flush();
 
     }
 
-    /**
-     * 静态极简版快读快写，可以直接用
-     */
-    static class sc {
-
-        static StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
-        static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));
-
-        public static int nextInt() throws IOException {
-            st.nextToken();
-            return (int) st.nval;
-        }
-
-        public static <T> void write(T o) {
-            pw.print(o);
-        }
-
-
-    }
-
-    /**
-     * 高精度快读快写,涉及到数字与字符串的读写时使用，避免不必要的麻烦
-     */
     static class scpro {
 
         static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -45,7 +41,7 @@ class ReadAndWrite {
         scpro() throws IOException {
         }
 
-        //read类升级，由StreamTokenizer变成StringTokenizer，相比于readline读一行，这个方法可以读混合字符串和数字的一行而且只读取字符串。
+        //read类升级，由StreamTokenizer变成StringTokenizer
         static String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
@@ -78,7 +74,6 @@ class ReadAndWrite {
         //一个快写任何类型的方法,报错改成泛型
         public static <T> void write(T o) {
             pw.println(o);
-            pw.flush();
         }
 
         //用来判断是否有未读取的数据
@@ -87,7 +82,6 @@ class ReadAndWrite {
         }
 
 
-
     }
-}
 
+}
