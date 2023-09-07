@@ -16,7 +16,7 @@ class ReadAndWrite {
     /**
      * 静态极简版快读快写，可以直接用
      */
-    static class sc {
+    public static class sc {
 
         static StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
         static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));
@@ -36,7 +36,7 @@ class ReadAndWrite {
     /**
      * 高精度快读快写,涉及到数字与字符串的读写时使用，避免不必要的麻烦
      */
-    static class scpro {
+    public static class scpro {
 
         static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         static StringTokenizer st;
