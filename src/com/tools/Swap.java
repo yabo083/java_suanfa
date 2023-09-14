@@ -1,8 +1,13 @@
 package com.tools;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 /**
- * 原文章：<a href="https://www.cnblogs.com/guojuboke/p/10369200.html">...</a>
+ * <a href="https://www.cnblogs.com/guojuboke/p/10369200.html">原文章</a>
+ * 建议只当模版写就行，如果调用方法似乎会因为java的值传递，而导致实质上没有交换。
  */
 public class Swap {
 
@@ -30,6 +35,15 @@ public class Swap {
         b = b ^ a;
         a = a ^ b;
         System.out.println("交换后：" + a + "," + b);
+    }
+
+     // Collections.swap()和Arrays.swap()都是值传递，不会改变原始值
+    public static void swap4(int a, int b) {
+        ArrayList<Integer> list = new ArrayList<>(Collections.nCopies(10000, 0));
+        System.out.println("原始值：" + a + "," + b);
+        Collections.swap(list, 0, 1);
+        System.out.println("交换后：" + a + "," + b);
+
     }
 
     public static void main(String[] args) {
