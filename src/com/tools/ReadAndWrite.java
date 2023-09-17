@@ -1,8 +1,6 @@
 package com.tools;
 
 import java.io.*;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.StringTokenizer;
 
 class ReadAndWrite {
@@ -77,15 +75,13 @@ class ReadAndWrite {
 
         //一个快写任何类型的方法,报错改成泛型
         public static <T> void write(T o) {
-            pw.println(o);
-            pw.flush();
+            pw.print(o);
         }
-
-        //用来判断是否有未读取的数据
-        static boolean hasNext() throws IOException {
-            return br.ready();
-        }
-
+//
+//        //用来判断是否有未读取的数据
+//        static boolean hasNext() throws IOException {
+//            return br.ready();
+//        }
 
 
     }
