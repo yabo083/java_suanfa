@@ -4,68 +4,73 @@ import java.io.*;
 import java.util.Arrays;
 
 public class acwing853 {
-	
-	static int N = 510, M = 10010;
-	
-	static class Edge{
-		int a, b, c;
-	    public Edge(int a,int b,int c){
-	        this.a = a;
-	        this.b = b;
-	        this.c = c;
-	    }
-	}
-	
-	static Edge[] edges = new Edge[M];
-	
-	static int n, m , k;
-	static int[] dist = new int[N];
-	static int[] last = new int[N];
-	
-	static void bellman_ford() {
-		Arrays.fill(dist, 0x3f);
-		
-		dist[1] = 0;
-		for (int i = 0; i < k; i ++) {
-			last = Arrays.copyOf(dist,n+1);
-			for (int j = 0; j < m; j ++ ) {
-				Edge e = edges[j];
-				dist[e.b] = Math.min(dist[e.b], last[e.a] + e.c);
-				
-			}
-			
-		}
-	}
 
-	public static void main(String[] args) throws Exception {
-			Read sc = new Read();
-			n = sc.nextInt();
-			m = sc.nextInt();
-			k = sc.nextInt();
-			for (int i = 0; i < m; i ++) {
-				int a = sc.nextInt();
-				int b = sc.nextInt();
-				int c = sc.nextInt();
-				edges[i] = new Edge(a,b,c);
-			}
+    public static int N = 510, M = 10010;
+    public static Edge[] edges = new Edge[M];
+    public static int n, m, k;
+    public static int[] dist = new int[N];
+    public static int[] last = new int[N];
 
-			bellman_ford();
+    public static void main(String[] args) throws IOException {
+        n = sc.nextInt();
+        m = sc.nextInt();
+        k = sc.nextInt();
 
-			if (dist[n]  > 0x3f3f3f3f / 2) System.out.println("impossible");
-			else System.out.println(dist[n]	);
-	}
+        for (int i = 0; i < m; i++) {
+            int a = sc.nextInt(), b = sc.nextInt(), c = sc.nextInt();
+            edges[i] = new Edge(a, b, c);
+        }
 
-	static class Read{
-		StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
-		PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));//快写
+        bellman_ford();
 
-		public int nextInt() throws Exception{
-			st.nextToken();
-			return (int) st.nval;
-		}
+        if (dist[n] > 0x3f3f3f3f / 2) {
+            sc.write("impossible");
+        } else {
+            sc.write(dist[n]);
+        }
 
-		public void write(Object o) throws Exception{
-			pw.println(o);
-		}
-	}
+        sc.pw.flush();
+    }
+
+    private static void bellman_ford() {
+        Arrays.fill(dist, 0x3f3f3f3f);
+
+        dist[1] = 0;
+
+        for (int i = 0; i < k; i++) {
+            last = Arrays.copyOf(dist, n + 1);
+            for (int j = 0; j < m; j++) {
+                Edge e = edges[j];
+                dist[e.b] = Math.min(dist[e.b], last[e.a] + e.c);
+            }
+        }
+    }
+
+    public static class Edge {
+
+        int a, b, c;
+
+        public Edge(int a, int b, int c) {
+            this.a = a;
+            this.b = b;
+            this.c = c;
+        }
+    }
+
+    public static class sc {
+
+        static StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
+        static PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));
+
+        public static int nextInt() throws IOException {
+            st.nextToken();
+            return (int) st.nval;
+        }
+
+        public static <T> void write(T o) {
+            pw.print(o);
+        }
+
+
+    }
 }
