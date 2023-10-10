@@ -77,12 +77,6 @@ class ReadAndWrite {
         public static <T> void write(T o) {
             pw.print(o);
         }
-//
-//        //用来判断是否有未读取的数据
-//        static boolean hasNext() throws IOException {
-//            return br.ready();
-//        }
-
 
     }
 }

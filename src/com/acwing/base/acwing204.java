@@ -16,19 +16,12 @@ public class acwing204 {
                 sc.pw.flush();
                 return;
             }
-            k1[0] = k1[0] * (m2 - m1) / d % (a2 / d); // 为什么这里要对a2/d取模？因为不模会溢出，也是为了输出最小非负整数解（这是数学性质）
+            k1[0] = k1[0] * (m2 - m1) / d % (a2 / d); // 为什么这里要对a2/d取模？因为不模会溢出。为什么能模？
             m1 += k1[0] * a1;
-            a1 *= (long) ((double) a2 / d);
+            a1 *= (a2 / d);
         }
-        sc.write((m1 % a1 + a1) % a1 + "\n"); // 为什么这里要这么写？是为了输出最小非负整数解
+        sc.write((m1 % a1 + a1) % a1 + "\n"); // 为什么这里要这么写？是为了输出最小非负整数解！
         sc.pw.flush();
-
-        int a = -5, b = 2;
-        System.out.println(a % b);
-        System.out.println((a + b) % b);
-        System.out.println((a % b + b) % b);
-        System.out.println(Math.floorMod(a, b));
-        System.out.println(a % b + b);
 
     }
 
