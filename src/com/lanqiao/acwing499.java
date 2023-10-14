@@ -397,11 +397,11 @@ public class acwing499 {
 //                x /= 10;
 //            }
 //            if (r >=date1 && r <= date2 && check(r))
-//                res ++;
+//                p ++;
             if (dates[i] >=date1 && dates[i] <= date2)
                 res ++;
         }
-//        System.out.println(res);
+//        System.out.println(p);
         sc.write(res);
 
 

@@ -13,7 +13,7 @@ public class Combination {
         long res = 1;
         for (long i = a, j = 1; j <= b; i--, j++) {
             res = res * i / j;
-//            if (res > n) return res;//特殊时候有用
+//            if (p > n) return p;//特殊时候有用
         }
         return res;
 

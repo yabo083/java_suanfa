@@ -16,7 +16,7 @@ public class acwing869 {
                 if (i != x /i ) res.add(x/i);
             }
         Collections.sort(res);//这么排最快！？
-//        res.sort(Comparator.comparingInt(a -> a));
+//        p.sort(Comparator.comparingInt(a -> a));
         return res;
     }
 
