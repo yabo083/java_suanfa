@@ -2,23 +2,22 @@ package com.acwing.base;
 
 import java.io.*;
 
-public class acwing891 {
+public class acwing892 {
 
     public static void main(String[] args) throws IOException {
         int n = sc.nextInt();
 
-        while(n-- > 0){
-            long res = 0;
-            int m = sc.nextInt();
-            while (m-- > 0) {
-                int x = sc.nextInt();
+        int res = 0;
+        for (int i = 1; i <= n; i++) {
+            int x = sc.nextInt();
+            if ((i & 1) == 1) {
                 res ^= x;
             }
-            if (res != 0) {
-                sc.write("Yes\n");
-            } else {
-                sc.write("No\n");
-            }
+        }
+        if (res != 0) {
+            sc.write("Yes\n");
+        } else {
+            sc.write("No\n");
         }
         sc.pw.flush();
     }
