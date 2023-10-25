@@ -6,7 +6,6 @@ public class acwing4 {
 
     public static int N = 110;
     public static int n, m;
-    public static int[] v = new int[N], w = new int[N], s = new int[N];
     public static int[] f = new int[N];
     public static int[] vv = new int[700], ww = new int[700];
 
@@ -15,25 +14,19 @@ public class acwing4 {
         n = sc.nextInt();
         m = sc.nextInt();
 
-        for (int i = 1; i <= n; i++) {
-            v[i] = sc.nextInt();
-            w[i] = sc.nextInt();
-            s[i] = sc.nextInt();
-        }
-
         int num = 1;
         for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= s[i]; j <<= 1) {
-                vv[num] = j * v[i];
-                ww[num++] = j * w[i];
-                s[i] -= j;
+            int v = sc.nextInt(), w = sc.nextInt(), s = sc.nextInt();
+            for (int j = 1; j <= s; j <<= 1) {
+                vv[num] = j * v;
+                ww[num++] = j * w;
+                s -= j;
             }
-            if (s[i] != 0) {
-                vv[num] = s[i] * v[i];
-                ww[num++] = s[i] * w[i];
+            if (s != 0) {
+                vv[num] = s * v;
+                ww[num++] = s * w;
             }
         }
-
         for (int i = 1; i < num; i++) {
             for (int j = m; j >= vv[i]; j--) {
                 f[j] = Math.max(f[j], f[j - vv[i]] + ww[i]);
