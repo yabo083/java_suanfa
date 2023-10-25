@@ -8,6 +8,8 @@ public class acwing4 {
     public static int n, m;
     public static int[] v = new int[N], w = new int[N], s = new int[N];
     public static int[] f = new int[N];
+    public static int[] vv = new int[700], ww = new int[700];
+
 
     public static void main(String[] args) throws IOException {
         n = sc.nextInt();
@@ -19,11 +21,22 @@ public class acwing4 {
             s[i] = sc.nextInt();
         }
 
+        int num = 1;
         for (int i = 1; i <= n; i++) {
-            for (int j = m; j >= v[i]; j--) {
-                for (int k = 0; k <= s[i] && k * v[i] <= j; k++) {
-                    f[j] = Math.max(f[j], f[j - v[i] * k] + w[i] * k);
-                }
+            for (int j = 1; j <= s[i]; j <<= 1) {
+                vv[num] = j * v[i];
+                ww[num++] = j * w[i];
+                s[i] -= j;
+            }
+            if (s[i] != 0) {
+                vv[num] = s[i] * v[i];
+                ww[num++] = s[i] * w[i];
+            }
+        }
+
+        for (int i = 1; i < num; i++) {
+            for (int j = m; j >= vv[i]; j--) {
+                f[j] = Math.max(f[j], f[j - vv[i]] + ww[i]);
             }
         }
         sc.write(f[m]);
