@@ -4,7 +4,7 @@ import java.io.*;
 
 public class acwing4 {
 
-    public static int N = 110;
+    public static int N = 2020;
     public static int n, m;
     public static int[] f = new int[N], g = new int[N], q = new int[N];
 
