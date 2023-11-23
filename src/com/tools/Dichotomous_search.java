@@ -17,7 +17,7 @@ public class Dichotomous_search {
      */
     int right_bound(int l, int r) {
         while (l < r) {
-            int mid = l + (r - l + 1) >> 1;
+            int mid = l + ((r - l + 1) >> 1); // 感觉这里还是得加括号提前算啊，要不然遇到极端清况不就寄了？
             if (check(mid)) l = mid;
             else r = mid - 1;
         }
@@ -29,7 +29,7 @@ public class Dichotomous_search {
      */
     int left_bound(int l, int r) {
         while (l < r) {
-            int mid = l + (r - l) >> 1;
+            int mid = l + ((r - l) >> 1); // 修改理由同上
             if (check(mid)) r = mid;
             else l = mid + 1;
         }
