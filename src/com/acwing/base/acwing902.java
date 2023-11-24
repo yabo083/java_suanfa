@@ -11,7 +11,7 @@ public class acwing902 {
 
     public static char[] a = new char[N], b = new char[N];
 
-    public static int[][] f = new int[N][N];
+    public static int[] f = new int[N];
 
     public static void main(String[] args) throws IOException {
         n = scpro.nextInt();
@@ -20,28 +20,22 @@ public class acwing902 {
         b = (scpro.readLine()).toCharArray();
 
         for (int i = 0; i <= m; i++) {
-            f[0][i] = i; // 字符串b有m个字符，对应表格模型有m列，所以这么初始化（其实多赋了一行
+            f[i] = i; // 字符串b有m个字符，对应表格模型有m列，所以这么初始化（其实多赋了一行
         }
-        for (int i = 0; i <= n; i++) {
-            f[i][0] = i; // 字符串a有n个字符，对应表格模型有n行，所以这么初始化
-        }
-
         for (int i = 1; i <= n; i++) {
+            int t1 = f[0]++; // 这里为什么不可以写成t1 = i呢？
             for (int j = 1; j <= m; j++) {
-                // if的好理解，而且也快，所以没必要追求什么花里胡哨的写法，易理解性和高效要做平衡。
-                if (a[i-1] == b[j-1])
-                    f[i][j] = f[i-1][j-1];
-                else
-                    f[i][j] = Math.min(f[i-1][j-1], Math.min(f[i][j-1], f[i-1][j])) + 1;
-
-//                //假设是a[i-1]><b[j-1], 看看哪种的操作次数少，然后加一次转移过来
-//                f[i][j] = Math.min(f[i][j - 1], f[i - 1][j]) + 1;
-//                //然后看看这个假设成不成立？就是再看看a[i-1]和b[j-1]到底等不等？，等不说了，肯定最小；不等，在和前一步得出来的小者再比一次，角逐最小！
-//                f[i][j] = Math.min(f[i][j], (f[i - 1][j - 1] + (a[i-1] != b[j-1] ? 1 : 0)));
+                int t2 = f[j];
+                if (a[i - 1] == b[j - 1]) {
+                    f[j] = t1;
+                } else {
+                    f[j] = Math.min(t1, Math.min(f[j - 1], f[j])) + 1;
+                }
+                t1 = t2;
             }
         }
 
-        scpro.write(f[n][m]);
+        scpro.write(f[m]);
         scpro.pw.flush();
 
     }
