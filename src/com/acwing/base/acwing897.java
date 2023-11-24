@@ -31,7 +31,7 @@ public class acwing897 {
         scpro.write(f[n][m] + "\n");
     }
 
-    public static void getLCS() throws IOException {
+    public static void getLCS() {
         int i = n, j = m, k = f[n][m];
         char[] res = new char[k--];
         while (i > 0 && j > 0) {
