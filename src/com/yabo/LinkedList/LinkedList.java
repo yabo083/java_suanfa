@@ -180,7 +180,7 @@ public class LinkedList<E> {
 //class Demo{
 //
 //    public static void main(String[] args) {
-//        LinkedList<Object>.Node list = new LinkedList<>().new Node();
+//        LinkedList<Object>.ListNode list = new LinkedList<>().new ListNode();
 //
 //    }
 //}
