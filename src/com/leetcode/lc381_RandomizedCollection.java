@@ -24,14 +24,9 @@ class lc381_RandomizedCollection {
         //  [[],[4],[3],[4],[2],[4],[4],[3],[4],[4]]
         lc381_RandomizedCollection s = new lc381_RandomizedCollection();
         s.insert(4);
-        s.insert(3);
-        s.insert(4);
-        s.insert(2);
-        s.insert(4);
         s.remove(4);
-        s.remove(3);
-        s.remove(4);
-        s.remove(4);
+
+        System.out.println(s.insert(4));
 
     }
 
@@ -63,7 +58,7 @@ class lc381_RandomizedCollection {
         int endIndex = arr.size() - 1;
         int endValue = arr.get(endIndex);
         // 5. 看看3、4的两个数值能不能对上？
-        //     能得话直接先删set1中的index；
+        //     能得话直接先删set1中的endIndex；
         //     不能，就这样：还是先准备（5.0. 获取尾值对应的集合set2）
         //         5.1. set1移除获取的下标index
         //         5.2. set2移除尾值的下标
@@ -73,10 +68,10 @@ class lc381_RandomizedCollection {
             set1.remove(endIndex);
         } else {
             HashSet<Integer> set2 = map.get(endValue);
-            set1.remove(index);
-            set2.remove(endIndex);
             set2.add(index);
             arr.set(index, endValue);
+            set1.remove(index);
+            set2.remove(endIndex);
         }
         // 7. 数组移除尾值……
         //     如果set1就此成空，那就map也把val与其set的对应也一并删除！
