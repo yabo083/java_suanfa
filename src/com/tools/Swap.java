@@ -1,6 +1,7 @@
 package com.tools;
 
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -38,6 +39,7 @@ public class Swap {
     }
 
      // Collections.swap()和Arrays.swap()都是值传递，不会改变原始值
+
     public static void swap4(int a, int b) {
         ArrayList<Integer> list = new ArrayList<>(Collections.nCopies(10000, 0));
         System.out.println("原始值：" + a + "," + b);
@@ -45,10 +47,15 @@ public class Swap {
         System.out.println("交换后：" + a + "," + b);
 
     }
+    private static void swap5(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
 
     public static void main(String[] args) {
         swap3(3, 5);
-        System.out.println(System.getProperty("file.encoding"));
+        System.out.println(Charset.defaultCharset().displayName());
     }
 
 }
